@@ -1,5 +1,6 @@
 # SparkBirthdays
 Spark application for a job interview
+The setup used is described in SETUP.md file
 
 HOW TO RUN
 ==========
@@ -22,3 +23,16 @@ Then, with the file "SparkBirthdays" opened in the text editor, use the menu "Ru
 Using the script provided (only in Linux and maybe MacOS):
 Just run:
 $> run.sh
+
+
+RUNNING THE TESTS
+=================
+via SBT
+Simply call:
+$> sbt test
+
+Or execute :
+$> sbt
+
+Then when SBT prompt is ready, call:
+> test
