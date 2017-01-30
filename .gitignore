@@ -1,0 +1,14 @@
+*.class
+*.log
+.scala_dependencies
+.worksheet
+
+# ignore sbt stuff
+.cache/
+.lib/
+.history/
+dist/*
+target/
+lib_managed/
+src_managed/
+
