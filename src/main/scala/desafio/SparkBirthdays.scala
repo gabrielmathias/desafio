@@ -23,8 +23,8 @@ object SparkBirthdays {
 
     if (args.length < 2) {
       println("Usage: spark-submit --class main.scala.desafio.SparkBirthdays target/scala-2.11/desafio_2.11-1.0.jar <path_to_csv_input_file> <path_to_json_output_file")
-      logger.warn("Execution of Birthdays failed due missing parameters")
-      System.exit(1)
+      logger.warn("Execution of SparkBirthdays failed due missing parameters")
+      throw new Exception("Execution of SparkBirthdays failed due missing parameters")
     }
     val csvInput = args(args.length - 2)
     val jsonOutput = args(args.length - 1)
