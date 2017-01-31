@@ -1,0 +1,96 @@
+log4j:WARN No appenders could be found for logger (main.scala.desafio.SparkBirthdays).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+17/01/30 17:45:23 INFO SparkContext: Running Spark version 2.0.0
+17/01/30 17:45:23 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+17/01/30 17:45:23 WARN Utils: Your hostname, monolith resolves to a loopback address: 127.0.1.1; using 192.168.0.102 instead (on interface wlan0)
+17/01/30 17:45:23 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+17/01/30 17:45:23 INFO SecurityManager: Changing view acls to: gabriel
+17/01/30 17:45:23 INFO SecurityManager: Changing modify acls to: gabriel
+17/01/30 17:45:23 INFO SecurityManager: Changing view acls groups to: 
+17/01/30 17:45:23 INFO SecurityManager: Changing modify acls groups to: 
+17/01/30 17:45:23 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(gabriel); groups with view permissions: Set(); users  with modify permissions: Set(gabriel); groups with modify permissions: Set()
+17/01/30 17:45:24 INFO Utils: Successfully started service 'sparkDriver' on port 45042.
+17/01/30 17:45:24 INFO SparkEnv: Registering MapOutputTracker
+17/01/30 17:45:24 INFO SparkEnv: Registering BlockManagerMaster
+17/01/30 17:45:24 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-d060b89d-3740-4589-ab58-46bd29c383b0
+17/01/30 17:45:24 INFO MemoryStore: MemoryStore started with capacity 366.3 MB
+17/01/30 17:45:24 INFO SparkEnv: Registering OutputCommitCoordinator
+17/01/30 17:45:24 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+17/01/30 17:45:24 INFO SparkUI: Bound SparkUI to 0.0.0.0, and started at http://192.168.0.102:4040
+17/01/30 17:45:24 INFO SparkContext: Added JAR file:/home/gabriel/ideia/desafio/target/scala-2.11/desafio_2.11-1.0.jar at spark://192.168.0.102:45042/jars/desafio_2.11-1.0.jar with timestamp 1485805524849
+17/01/30 17:45:24 INFO Executor: Starting executor ID driver on host localhost
+17/01/30 17:45:24 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 52289.
+17/01/30 17:45:24 INFO NettyBlockTransferService: Server created on 192.168.0.102:52289
+17/01/30 17:45:24 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 192.168.0.102, 52289)
+17/01/30 17:45:25 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.0.102:52289 with 366.3 MB RAM, BlockManagerId(driver, 192.168.0.102, 52289)
+17/01/30 17:45:25 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 192.168.0.102, 52289)
+17/01/30 17:45:25 WARN SparkContext: Use an existing SparkContext, some configuration may not take effect.
+17/01/30 17:45:25 INFO SharedState: Warehouse path is 'file:/home/gabriel/ideia/desafio/spark-warehouse'.
+17/01/30 17:45:25 INFO CatalystSqlParser: Parsing command: string
+17/01/30 17:45:27 INFO CatalystSqlParser: Parsing command: string
+17/01/30 17:45:27 INFO CatalystSqlParser: Parsing command: string
+17/01/30 17:45:27 INFO CatalystSqlParser: Parsing command: string
+17/01/30 17:45:28 INFO SparkBirthdays: Applying filtering to the DataFrame
+17/01/30 17:45:28 INFO SparkBirthdays: Preparing to output JSON into Out.json
+17/01/30 17:45:28 WARN SparkBirthdays: The file Out.json will be unmercifully overwritten!
+17/01/30 17:45:29 INFO FileSourceStrategy: Pruning directories with: 
+17/01/30 17:45:29 INFO FileSourceStrategy: Post-Scan Filters: birthday#3 RLIKE \d{2}?\d{2}-[0]?[1-6]-\d{1,2}
+17/01/30 17:45:29 INFO FileSourceStrategy: Pruned Data Schema: struct<name: string, email: string, gender: string, birthday: string ... 2 more fields>
+17/01/30 17:45:29 INFO FileSourceStrategy: Pushed Filters: 
+17/01/30 17:45:29 INFO MemoryStore: Block broadcast_0 stored as values in memory (estimated size 264.0 KB, free 366.0 MB)
+17/01/30 17:45:29 INFO MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 23.0 KB, free 366.0 MB)
+17/01/30 17:45:29 INFO BlockManagerInfo: Added broadcast_0_piece0 in memory on 192.168.0.102:52289 (size: 23.0 KB, free: 366.3 MB)
+17/01/30 17:45:29 INFO SparkContext: Created broadcast 0 from json at SparkBirthdays.scala:78
+17/01/30 17:45:29 INFO FileSourceStrategy: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+17/01/30 17:45:29 INFO deprecation: mapred.job.id is deprecated. Instead, use mapreduce.job.id
+17/01/30 17:45:29 INFO deprecation: mapred.tip.id is deprecated. Instead, use mapreduce.task.id
+17/01/30 17:45:29 INFO deprecation: mapred.task.id is deprecated. Instead, use mapreduce.task.attempt.id
+17/01/30 17:45:29 INFO deprecation: mapred.task.is.map is deprecated. Instead, use mapreduce.task.ismap
+17/01/30 17:45:29 INFO deprecation: mapred.task.partition is deprecated. Instead, use mapreduce.task.partition
+17/01/30 17:45:29 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+17/01/30 17:45:29 INFO DefaultWriterContainer: Using output committer class org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter
+17/01/30 17:45:29 INFO CodeGenerator: Code generated in 291.423821 ms
+17/01/30 17:45:30 INFO SparkContext: Starting job: json at SparkBirthdays.scala:78
+17/01/30 17:45:30 INFO DAGScheduler: Got job 0 (json at SparkBirthdays.scala:78) with 1 output partitions
+17/01/30 17:45:30 INFO DAGScheduler: Final stage: ResultStage 0 (json at SparkBirthdays.scala:78)
+17/01/30 17:45:30 INFO DAGScheduler: Parents of final stage: List()
+17/01/30 17:45:30 INFO DAGScheduler: Missing parents: List()
+17/01/30 17:45:30 INFO DAGScheduler: Submitting ResultStage 0 (CoalescedRDD[2] at json at SparkBirthdays.scala:78), which has no missing parents
+17/01/30 17:45:30 INFO MemoryStore: Block broadcast_1 stored as values in memory (estimated size 78.5 KB, free 365.9 MB)
+17/01/30 17:45:30 INFO MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 29.4 KB, free 365.9 MB)
+17/01/30 17:45:30 INFO BlockManagerInfo: Added broadcast_1_piece0 in memory on 192.168.0.102:52289 (size: 29.4 KB, free: 366.2 MB)
+17/01/30 17:45:30 INFO SparkContext: Created broadcast 1 from broadcast at DAGScheduler.scala:1012
+17/01/30 17:45:30 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 0 (CoalescedRDD[2] at json at SparkBirthdays.scala:78)
+17/01/30 17:45:30 INFO TaskSchedulerImpl: Adding task set 0.0 with 1 tasks
+17/01/30 17:45:30 INFO TaskSetManager: Starting task 0.0 in stage 0.0 (TID 0, localhost, partition 0, PROCESS_LOCAL, 6165 bytes)
+17/01/30 17:45:30 INFO Executor: Running task 0.0 in stage 0.0 (TID 0)
+17/01/30 17:45:30 INFO Executor: Fetching spark://192.168.0.102:45042/jars/desafio_2.11-1.0.jar with timestamp 1485805524849
+17/01/30 17:45:30 INFO TransportClientFactory: Successfully created connection to /192.168.0.102:45042 after 206 ms (0 ms spent in bootstraps)
+17/01/30 17:45:30 INFO Utils: Fetching spark://192.168.0.102:45042/jars/desafio_2.11-1.0.jar to /tmp/spark-1a775baf-395d-4d82-af8b-04d26c5510b8/userFiles-1ac8c9ee-65ee-49c0-8f0c-2c8b7acc4bc9/fetchFileTemp8120400582082823077.tmp
+17/01/30 17:45:30 INFO Executor: Adding file:/tmp/spark-1a775baf-395d-4d82-af8b-04d26c5510b8/userFiles-1ac8c9ee-65ee-49c0-8f0c-2c8b7acc4bc9/desafio_2.11-1.0.jar to class loader
+17/01/30 17:45:30 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+17/01/30 17:45:30 INFO DefaultWriterContainer: Using output committer class org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter
+17/01/30 17:45:30 INFO FileScanRDD: Reading File path: file:///home/gabriel/ideia/desafio/data/Mock.csv, range: 0-1631066, partition values: [empty row]
+17/01/30 17:45:30 INFO CodeGenerator: Code generated in 18.195741 ms
+17/01/30 17:45:31 INFO FileOutputCommitter: Saved output of task 'attempt_201701301745_0000_m_000000_0' to file:/home/gabriel/ideia/desafio/Out.json/_temporary/0/task_201701301745_0000_m_000000
+17/01/30 17:45:31 INFO SparkHadoopMapRedUtil: attempt_201701301745_0000_m_000000_0: Committed
+17/01/30 17:45:31 INFO Executor: Finished task 0.0 in stage 0.0 (TID 0). 1444 bytes result sent to driver
+17/01/30 17:45:31 INFO TaskSetManager: Finished task 0.0 in stage 0.0 (TID 0) in 1002 ms on localhost (1/1)
+17/01/30 17:45:31 INFO TaskSchedulerImpl: Removed TaskSet 0.0, whose tasks have all completed, from pool 
+17/01/30 17:45:31 INFO DAGScheduler: ResultStage 0 (json at SparkBirthdays.scala:78) finished in 1.026 s
+17/01/30 17:45:31 INFO DAGScheduler: Job 0 finished: json at SparkBirthdays.scala:78, took 1.183648 s
+17/01/30 17:45:31 INFO DefaultWriterContainer: Job job_201701301745_0000 committed.
+17/01/30 17:45:31 INFO SparkBirthdays: Processing finished.
+17/01/30 17:45:31 INFO SparkContext: Invoking stop() from shutdown hook
+17/01/30 17:45:31 INFO SparkUI: Stopped Spark web UI at http://192.168.0.102:4040
+17/01/30 17:45:31 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+17/01/30 17:45:31 INFO MemoryStore: MemoryStore cleared
+17/01/30 17:45:31 INFO BlockManager: BlockManager stopped
+17/01/30 17:45:31 INFO BlockManagerMaster: BlockManagerMaster stopped
+17/01/30 17:45:31 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+17/01/30 17:45:31 INFO SparkContext: Successfully stopped SparkContext
+17/01/30 17:45:31 INFO ShutdownHookManager: Shutdown hook called
+17/01/30 17:45:31 INFO ShutdownHookManager: Deleting directory /tmp/spark-1a775baf-395d-4d82-af8b-04d26c5510b8
+Results in Out.json folder!
