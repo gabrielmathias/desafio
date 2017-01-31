@@ -5,6 +5,9 @@ import org.apache.spark.{SparkConf, sql}
 import org.apache.spark.sql.{SaveMode, SparkSession}
 import org.apache.spark.sql.types.StructType
 import org.slf4j.LoggerFactory
+import com.typesafe.config._
+
+
 
 /**
   * Running:
@@ -16,20 +19,41 @@ class SparkBirthdays {
 
 }
 
+/**
+  * Created by gabriel mathias
+  */
 object SparkBirthdays {
 
   def main(args: Array[String]): Unit = {
     val logger = LoggerFactory.getLogger(classOf[SparkBirthdays])
 
-    if (args.length < 2) {
-      println("Usage: spark-submit --class main.scala.desafio.SparkBirthdays target/scala-2.11/desafio_2.11-1.0.jar <path_to_csv_input_file> <path_to_json_output_file")
-      logger.warn("Execution of SparkBirthdays failed due missing parameters")
-      throw new Exception("Execution of SparkBirthdays failed due missing parameters")
-    }
-    val csvInput = args(args.length - 2)
-    val jsonOutput = args(args.length - 1)
+    def getParams = {
+      logger.debug("Searching for execution parameters")
 
-    logger.info("Preparing to process $csvInput")
+      if (args.length < 2) {
+        val conf = ConfigFactory.load().getConfig("desafio")
+        if (conf.entrySet().size() < 2) {
+          logger.warn("Failed to find valid parameters")
+          logger.debug("Execution of SparkBirthdays failed due missing parameters and/or configuration file")
+          println("Usage: spark-submit --class main.scala.desafio.SparkBirthdays target/scala-2.11/desafio_2.11-1.0.jar <path_to_csv_input_file> <path_to_json_output_file")
+          println("Or provide a application.conf on the classpath with the folowing variables: desafio.input, desafio.output")
+          throw new Exception("Execution of SparkBirthdays failed due missing parameters")
+        } else {
+          logger.debug("Parameters sent by configuration file")
+          val desafioInput: String = conf.getString("input")
+          val desafioOutput: String = conf.getString("output")
+          (desafioInput,desafioOutput)
+        }
+      } else {
+        logger.debug("Parameters sent by arguments in the command line")
+        val csvInput = args(args.length - 2)
+        val jsonOutput = args(args.length - 1)
+        (csvInput, jsonOutput)
+      }
+    }
+
+    /* Loading execution parameters */
+    val (inputCSV, outputCSV) = getParams
 
     def getSparkSession: SparkSession = {
       val conf = new SparkConf()
@@ -56,8 +80,11 @@ object SparkBirthdays {
         .read
         .schema(schema)
         .option("header", "true")
-        .csv(csvInput)
+        .csv(inputCSV)
     }
+
+
+    logger.info("Preparing to process $inputCSV")
 
     logger.info("Obtaining the input DataFrame")
     val csvDF = getInputDataFrame(getSparkSession)
@@ -68,14 +95,14 @@ object SparkBirthdays {
     logger.info("Applying filtering to the DataFrame")
     val firstSemesterDF = csvDF.filter(csvDF("birthday") rlike firstSemesterMatching)
 
-    logger.info(s"Preparing to output JSON into $jsonOutput")
-    logger.warn(s"The file $jsonOutput will be unmercifully overwritten!")
+    logger.info(s"Preparing to output JSON into $outputCSV")
+    logger.warn(s"The file $outputCSV will be unmercifully overwritten!")
 
     firstSemesterDF
       .coalesce(1) // this will coalesce all the results into one single list inside one worker
       .write
       .mode(SaveMode.Overwrite) // this will overwrite the output file, if it exists
-      .json(jsonOutput) // creating the json strutured files on the jsonOutput path
+      .json(outputCSV) // creating the json strutured files on the jsonOutput path
 
     logger.info("Processing finished.")
   }
